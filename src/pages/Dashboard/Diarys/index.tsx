@@ -54,7 +54,7 @@ const Diarys: React.FC = () => {
   return (
     <PageContainer hasBackButton>
       <ContainerDiarys>
-        <PagesTitle>Como foi seu dia?</PagesTitle>
+        <PagesTitle>Como está seu dia?</PagesTitle>
         <DefaultInput
           value={diary.title}
           onChange={(e) =>
