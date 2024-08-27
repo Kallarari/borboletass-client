@@ -1,25 +1,19 @@
+const {
+  PHASE_DEVELOPMENT_SERVER,
+  PHASE_PRODUCTION_BUILD,
+} = require("next/constants");
 
-const withPWA = require('next-pwa')({
-  dest: "public",
-});
+/** @type {import("next").NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+};
 
-const nexConfig = {
-  reactStrictMode:true,
-}
-module.exports = withPWA(nexConfig);
-
-
-/* 
-
-export default withPWA({
-    reactStrictMode:true,
-    disable: process.env.NODE_ENV === "development",
-    dest:"public",
-    register: true,
-    skipWaiting: true,
-    compiler:{
-      ssr:true,
-      displayName:true,
-      
-    }
-}) */
+module.exports = (phase) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
+    const withPWA = require("@ducanh2912/next-pwa").default({
+      dest: "public",
+    });
+    return withPWA(nextConfig);
+  }
+  return nextConfig;
+};
