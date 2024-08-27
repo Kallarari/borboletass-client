@@ -17,6 +17,9 @@ import {
   InputContainer,
   StyledButton,
   ErrorText,
+  WellComeContainer,
+  HeaderBlack,
+  LogoBorboletass,
 } from "../styles/Homepage.module";
 import DefaultButton from "@/components/DefaultButton";
 import DefaultInput from "@/components/DefaultInput";
@@ -25,6 +28,7 @@ import DefaultInput from "@/components/DefaultInput";
 
 const HomePage: React.FC = () => {
   const router = useRouter();
+  const [isInitialPage, setIsInitialPage] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [user, setUser] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -33,18 +37,30 @@ const HomePage: React.FC = () => {
       .get(`api/users/Login?userName=${user}&password=${password}`)
       .then((res) => {
         if (user) window.localStorage.setItem("user", user);
-        router.push("/Dashboard");
+        router.push("/Dashboard/Diarys");
       })
       .catch((err) => {
         setHasError(true);
         console.log(err);
       });
   }
-  return (
+  return !isInitialPage ? (
+    <PageContainer>
+      <WellComeContainer>
+        <HeaderBlack>Borboletass</HeaderBlack>
+        <DefaultButton
+          onClick={() => setIsInitialPage(true)}
+          label="Fazer Login"
+        ></DefaultButton>
+        <LogoBorboletass></LogoBorboletass>
+      </WellComeContainer>
+    </PageContainer>
+  ) : (
     <Container>
       <ContentContainer>
         <Header>Borboletass</Header>
-        <SubHeader>Texto subtitulo do borboletass</SubHeader>
+        {/* 
+        <SubHeader>Bem vindo </SubHeader> */}
         <LoginContainer>
           <InputContainer>
             <StyledLabel>Nome de usuário</StyledLabel>

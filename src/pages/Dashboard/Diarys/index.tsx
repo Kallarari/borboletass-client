@@ -79,22 +79,58 @@ const Diarys: React.FC = () => {
             isClicked={diary.happiness == 0}
             onClick={() => setDiary((prev) => ({ ...prev, happiness: 0 }))}
           >
-            <Icon width={40} color="#777" icon="ant-design:smile-filled" />
-            <StyledSpan>feliz</StyledSpan>
+            <Icon width={40} color="#242a67" icon="ant-design:smile-filled" />
+            <StyledSpan>Feliz</StyledSpan>
           </HappinesCard>
           <HappinesCard
             isClicked={diary.happiness == 1}
             onClick={() => setDiary((prev) => ({ ...prev, happiness: 1 }))}
           >
-            <Icon width={38} color="#777" icon="fa6-solid:face-meh" />
+            <Icon width={38} color="#fa1" icon="fa6-solid:face-meh" />
             <StyledSpan>Indiferente</StyledSpan>
           </HappinesCard>
           <HappinesCard
             isClicked={diary.happiness == 2}
             onClick={() => setDiary((prev) => ({ ...prev, happiness: 2 }))}
           >
-            <Icon width={40} color="#777" icon="mingcute:sad-fill" />
+            <Icon width={40} color="#302f2f" icon="mingcute:sad-fill" />
             <StyledSpan>Triste</StyledSpan>
+          </HappinesCard>
+        </HappinessContainer>
+
+        <HappinessContainer>
+          <HappinesCard
+            isClicked={diary.happiness == 3}
+            onClick={() => setDiary((prev) => ({ ...prev, happiness: 3 }))}
+          >
+            <Icon
+              width={40}
+              color="#242a67"
+              icon="material-symbols:sentiment-calm"
+            />
+            <StyledSpan>Calmo</StyledSpan>
+          </HappinesCard>
+          <HappinesCard
+            isClicked={diary.happiness == 4}
+            onClick={() => setDiary((prev) => ({ ...prev, happiness: 4 }))}
+          >
+            <Icon
+              width={38}
+              color="#fa1"
+              icon="material-symbols:sentiment-stressed-rounded"
+            />
+            <StyledSpan>Em pânico</StyledSpan>
+          </HappinesCard>
+          <HappinesCard
+            isClicked={diary.happiness == 5}
+            onClick={() => setDiary((prev) => ({ ...prev, happiness: 5 }))}
+          >
+            <Icon
+              width={40}
+              color="#302f2f"
+              icon="material-symbols:sentiment-dissatisfied-rounded"
+            />
+            <StyledSpan>Confuso</StyledSpan>
           </HappinesCard>
         </HappinessContainer>
         <ButtonsContainer>

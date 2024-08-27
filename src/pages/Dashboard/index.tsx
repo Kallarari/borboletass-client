@@ -41,8 +41,8 @@ const Dashboard: React.FC = () => {
           </IconsContainer>
         </ImageContainer>
         <IndicationContainer>
-          {IndicationsArray.map((itens) => (
-            <IndicaTionDasboardCard
+          {IndicationsArray.map((itens,index) => (
+            <IndicaTionDasboardCard key={index}
               title={itens.title}
               subtitle={itens.subtitle}
             ></IndicaTionDasboardCard>

@@ -21,7 +21,7 @@ export const BackdropFilter = styled.div`
   width: 100%;
   height: 100%;
   background-color: #7a7cb7;
-  opacity: 0.7;
+  opacity: 1;
   pointer-events: none;
   z-index: 1;
 `;
@@ -37,7 +37,6 @@ export const BackdropImage = styled.div`
   background-position: center;
   filter: blur(3px);
   background-size: cover;
-  background-image: url("./backgroundcats.jpg");
 `;
 
 export const ContentContainer = styled.div`
@@ -54,7 +53,34 @@ export const Header = styled.h1`
   font-style: normal;
   color: var(--text);
   font-size: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 60px;
+`;
+export const HeaderBlack = styled.h1`
+  @import url("https://fonts.googleapis.com/css2?family=Kreon&display=swap");
+  font-family: "Kreon", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: var(--black-text);
+  font-size: 40px;
+  margin:0px;
+`;
+export const LogoBorboletass = styled.div`
+width: 262px;
+height: 99px;
+background-image: url('./logo.png');
+`
+export const WellComeContainer = styled.div`
+  background: url("./buterflybackground.png")  no-repeat center center fixed;
+  height: 83vh;
+  width: 100vw;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 `;
 export const SubHeader = styled.h3`
   @import url("https://fonts.googleapis.com/css2?family=Kreon&display=swap");
