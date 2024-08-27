@@ -31,7 +31,10 @@ const HomePage: React.FC = () => {
   function handleMakeLogin() {
     axios
       .get(`api/users/Login?userName=${user}&password=${password}`)
-      .then((res) => router.push('/Dashboard'))
+      .then((res) => {
+        if (user) window.localStorage.setItem("user", user);
+        router.push("/Dashboard");
+      })
       .catch((err) => {
         setHasError(true);
         console.log(err);
