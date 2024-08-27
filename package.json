@@ -29,5 +29,6 @@
   },
   "browser": {
     "child_process": false
-  }
+  },
+  "type": "module"
 }
