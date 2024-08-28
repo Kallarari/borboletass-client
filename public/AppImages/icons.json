@@ -1,13 +1,4 @@
 {
-  "theme_color": "#a094ee",
-  "background_color": "#a094ee",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-  "name": "Borboletass",
-  "short_name": "Borboletass",
-  "description": "Acompanhando seus dias",
-
   "icons": [
     {
       "src": "windows11/SmallTile.scale-100.png",
