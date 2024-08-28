@@ -3,13 +3,13 @@ import PageContainer from "@/components/PageContainer";
 import axios from "axios";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DefaultButton from "@/components/DefaultButton";
 
 const HomePage: React.FC = () => {
   const router = useRouter();
-  const [isInitialPage, setIsInitialPage] = useState(false);
+  const [isInitialPage, setIsInitialPage] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [user, setUser] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -25,6 +25,9 @@ const HomePage: React.FC = () => {
         console.log(err);
       });
   }
+  useEffect(() => {
+    setIsInitialPage(false);
+  }, []);
   return !isInitialPage ? (
     <PageContainer>
       <WellComeContainer>
