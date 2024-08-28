@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
   return !isInitialPage ? (
     <PageContainer>
       <WellComeContainer>
-        <HeaderBlack>Borboletass</HeaderBlack>
+        <HeaderBlack>Bem vindo(a)</HeaderBlack>
         <DefaultButton
           onClick={() => setIsInitialPage(true)}
           label="Fazer Login"
