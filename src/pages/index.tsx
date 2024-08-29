@@ -146,7 +146,7 @@ const LogoBorboletass = styled.div`
 `;
 const WellComeContainer = styled.div`
   background: url("./buterflybackground.png") no-repeat center center fixed;
-  height: 83vh;
+  height: 80vh;
   width: 100vw;
   -webkit-background-size: cover;
   -moz-background-size: cover;

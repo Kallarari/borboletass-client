@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const HeaderContainer = styled.div`
   width: 100%;
   background-color: var(--primary);
-  height: 70px;
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,6 +28,6 @@ export const Header = styled.h1`
 export const FooterContainer = styled.div`
   width: 100%;
   background-color: var(--primary);
-  height: 70px;
+  height: 10vh;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 `;

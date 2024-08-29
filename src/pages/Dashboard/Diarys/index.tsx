@@ -48,8 +48,8 @@ const Diarys: React.FC = () => {
         data: new Date(),
         user: window.localStorage.getItem("user"),
       })
-      .then((res) => router.back())
-      .catch((err) => router.back());
+      .then((res) => router.push('/Dashboard'))
+      .catch((err) => router.push('/Dashboard'));
   }
   return (
     <PageContainer hasBackButton>
