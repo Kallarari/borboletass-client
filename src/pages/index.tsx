@@ -6,19 +6,22 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DefaultButton from "@/components/DefaultButton";
+import { useAuthStore } from "@/store/authStore";
+import { IUser } from "@/types/IUser";
 
 const HomePage: React.FC = () => {
+  const { saveUser } = useAuthStore();
   const router = useRouter();
   const [isInitialPage, setIsInitialPage] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const [user, setUser] = useState<string>();
+  const [login, setLogin] = useState<string>();
   const [password, setPassword] = useState<string>();
   function handleMakeLogin() {
     axios
-      .get(`api/users/Login?userName=${user}&password=${password}`)
+      .get<IUser>(`api/users/Login?userName=${login}&password=${password}`)
       .then((res) => {
-        if (user) window.localStorage.setItem("user", user);
-        router.push("/Dashboard/Diarys");
+        if (login) saveUser(res.data);/* 
+        router.push("/Dashboard/Diarys"); */
       })
       .catch((err) => {
         setHasError(true);
@@ -27,6 +30,10 @@ const HomePage: React.FC = () => {
   }
   useEffect(() => {
     setIsInitialPage(false);
+    let user = window.localStorage.getItem('auth')
+    if (!!user) {
+      router.push("/Dashboard/Diarys"); 
+    }
   }, []);
   return !isInitialPage ? (
     <PageContainer>
@@ -49,8 +56,8 @@ const HomePage: React.FC = () => {
           <InputContainer>
             <StyledLabel>Nome de usuário</StyledLabel>
             <StyledInput
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
               placeholder="Digite aqui..."
             ></StyledInput>
           </InputContainer>
