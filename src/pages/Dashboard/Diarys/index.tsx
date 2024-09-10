@@ -16,13 +16,14 @@ import { IDiary } from "@/types/IDiary";
 import { Icon } from "@iconify/react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useAuthStore } from "@/store/authStore";
 
 // import { Container } from './styles';
 
 const Diarys: React.FC = () => {
+  const { user } = useAuthStore();
   useEffect(() => {
-    let user = window.localStorage.getItem("auth");
-    if (!!user) {
+    if (user?.type == 'admin') {
       router.push("/");
     }
   }, []);
@@ -52,7 +53,7 @@ const Diarys: React.FC = () => {
         content: diary.content,
         title: diary.title,
         data: new Date(),
-        user: window.localStorage.getItem("user"),
+        user: user?._id,
       })
       .then((res) => router.push("/Dashboard"))
       .catch((err) => router.push("/Dashboard"));

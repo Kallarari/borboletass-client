@@ -14,8 +14,17 @@ import {
   StyledLabel,
   StyledTitle,
 } from "@/styles/DiarysView.module";
+import { useAuthStore } from "@/store/authStore";
+import { useRouter } from "next/router";
 
 const View: React.FC = () => {
+  const { user } = useAuthStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (user && user.type != "admin") {
+      router.push("/");
+    }
+  }, [user]);
   const [diaryData, setDiaryData] = useState<IDiary>();
   const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();

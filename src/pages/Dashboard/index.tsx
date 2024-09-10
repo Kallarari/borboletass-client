@@ -13,14 +13,15 @@ import IndicaTionDasboardCard from "@/components/IndicaTionDasboardCard";
 import PagesTitle from "@/components/PagesTitle";
 import DefaultButton from "@/components/DefaultButton";
 import { useRouter } from "next/router";
+import { useAuthStore } from "@/store/authStore";
 
 const Dashboard: React.FC = () => {
+  const { user } = useAuthStore();
   useEffect(() => {
-    let user = window.localStorage.getItem("auth");
-    if (!!user) {
+    if (!user) {
       router.push("/");
-    }
-  }, []);
+    } 
+  }, [user]);
   const router = useRouter();
   const IndicationsArray = [
     { title: "Ansiedade", subtitle: "Uma sensação que carrega..." },

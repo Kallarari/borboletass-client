@@ -7,9 +7,14 @@ export default async (request: NowRequest, response: NowResponse) => {
   if (request.query.password && request.query.userName) {
     const db = await connectToDatabase(process.env.MONGODB_URI!);
     const collection = db.collection("users");
-    const result = await collection.findOne({
-        userName: request.query.userName,
+    let result = await collection.findOne({
+      userName: request.query.userName,
     });
+    if (!result) {
+      result = await collection.findOne({
+        name: request.query.userName,
+      });
+    }
     if (result) {
       if (result.password == request.query.password)
         return response.status(200).json(result);

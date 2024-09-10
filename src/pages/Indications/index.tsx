@@ -14,12 +14,19 @@ import IndicationCard from "@/components/IndicationCard";
 import DefaultButton from "@/components/DefaultButton";
 import { EosIconsLoading } from "../../../public/assets/components/LoadingCircle";
 import { useRouter } from "next/router";
+import { useAuthStore } from "@/store/authStore";
 
 const Indications: React.FC = () => {
+  const { user } = useAuthStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (user && user.type != "admin") {
+      router.push("/");
+    }
+  }, [user]);
   const [indicationList, setIndicationList] = useState<IIndication[]>();
   const [title, setTitle] = useState("");
 
-  const router = useRouter();
 
   useEffect(() => {
     handleGetAllIndications();

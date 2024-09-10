@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
     let user = window.localStorage.getItem('auth')
     if (!!user) {
       router.push("/Dashboard/Diarys"); 
-    }
+    }    
   }, []);
   return !isInitialPage ? (
     <PageContainer>

@@ -11,13 +11,13 @@ export const { auth, signIn, signOut } = NextAuth({
         username: { label: "Username" },
         password: { label: "Password", type: "password" },
       },
-      async authorize({ password, username }) {
+    /*   async authorize({ password, username }) {
         const response = await axios
           .get(`api/users/Login?userName=${username}&password=${password}`)
           .then((res) => res);
         if (response.status > 300) return null;
         return (await response.data) ?? null;
-      },
+      }, */
     }),
   ],
 });

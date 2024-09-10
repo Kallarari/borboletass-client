@@ -38,6 +38,7 @@ const Edition: React.FC = () => {
         .catch((err) => console.log(err));
     setIsLoading(false);
   }, [params.id]);
+
   function hanldeCreateUser() {
     if (user.userName == "")
       return setItensHasError((prev) => ({ ...prev, userName: true }));
@@ -51,7 +52,7 @@ const Edition: React.FC = () => {
       userName: false,
     });
     axios
-      .post("api/users/CreateNew", {
+      .post("../api/users/CreateNew", {
         userName: user.userName,
         name: user.name,
         password: user.password,
