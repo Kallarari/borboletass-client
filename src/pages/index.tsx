@@ -29,8 +29,8 @@ const HomePage: React.FC = () => {
         console.log(err);
       });
   }
-  let localStorageUser = window.localStorage.getItem("auth");
   useEffect(() => {
+    const localStorageUser = window.localStorage.getItem("auth");
     setIsInitialPage(false);
     if (localStorageUser || user) {
       if (user?.type == "admin") {
@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
       }
       router.push("/Dashboard/Diarys");
     }
-  }, [user, localStorageUser]);
+  }, [user]);
   return !isInitialPage ? (
     <PageContainer>
       <WellComeContainer>
