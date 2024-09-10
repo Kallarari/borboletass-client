@@ -10,7 +10,7 @@ import { useAuthStore } from "@/store/authStore";
 import { IUser } from "@/types/IUser";
 
 const HomePage: React.FC = () => {
-  const { saveUser } = useAuthStore();
+  const { saveUser, user } = useAuthStore();
   const router = useRouter();
   const [isInitialPage, setIsInitialPage] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -21,22 +21,25 @@ const HomePage: React.FC = () => {
       .get<IUser>(`api/users/Login?userName=${login}&password=${password}`)
       .then((res) => {
         if (login) saveUser(res.data);
-        if(res.data.type == "admin")
-          return router.push("/AdminDashboard"); 
-        router.push("/Dashboard/Diarys"); 
+        if (res.data.type == "admin") return router.push("/AdminDashboard");
+        router.push("/Dashboard/Diarys");
       })
       .catch((err) => {
         setHasError(true);
         console.log(err);
       });
   }
+  let localStorageUser = window.localStorage.getItem("auth");
   useEffect(() => {
     setIsInitialPage(false);
-    let user = window.localStorage.getItem('auth')
-    if (!!user) {
-      router.push("/Dashboard/Diarys"); 
-    }    
-  }, []);
+    if (localStorageUser || user) {
+      if (user?.type == "admin") {
+        router.push("/AdminDashboard");
+        return;
+      }
+      router.push("/Dashboard/Diarys");
+    }
+  }, [user, localStorageUser]);
   return !isInitialPage ? (
     <PageContainer>
       <WellComeContainer>
