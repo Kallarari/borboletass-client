@@ -12,11 +12,18 @@ import axios from "axios";
 import PageContainer from "@/components/PageContainer";
 import PagesTitle from "@/components/PagesTitle";
 import DiaryCard from "@/components/DiaryCard";
+import { useAuthStore } from "@/store/authStore";
+import { useRouter } from "next/router";
 
 const Diarys: React.FC = () => {
+  const { user } = useAuthStore();
+  const router = useRouter();
   const [inputText, setInputText] = useState("");
   const [diarysList, setDiarysList] = useState<IDiary[]>([]);
   useEffect(() => {
+    if (user && user.type != "admin") {
+      router.push("/");
+    }
     hanldeGetAllDiarys();
   }, []);
   function hanldeGetAllDiarys() {

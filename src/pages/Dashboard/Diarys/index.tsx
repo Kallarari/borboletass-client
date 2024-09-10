@@ -1,5 +1,5 @@
 import DefaultInput from "@/components/DefaultInput";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EosIconsLoading } from "../../../../public/assets/components/LoadingCircle";
 import PagesTitle from "@/components/PagesTitle";
 import PageContainer from "@/components/PageContainer";
@@ -20,6 +20,12 @@ import { useRouter } from "next/router";
 // import { Container } from './styles';
 
 const Diarys: React.FC = () => {
+  useEffect(() => {
+    let user = window.localStorage.getItem("auth");
+    if (!!user) {
+      router.push("/");
+    }
+  }, []);
   const [diary, setDiary] = useState<IDiary>({
     _id: "",
     content: "",
@@ -48,8 +54,8 @@ const Diarys: React.FC = () => {
         data: new Date(),
         user: window.localStorage.getItem("user"),
       })
-      .then((res) => router.push('/Dashboard'))
-      .catch((err) => router.push('/Dashboard'));
+      .then((res) => router.push("/Dashboard"))
+      .catch((err) => router.push("/Dashboard"));
   }
   return (
     <PageContainer hasBackButton>

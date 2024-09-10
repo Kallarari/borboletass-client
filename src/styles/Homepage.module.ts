@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const AdminContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: space-around;
+  min-height: 80vh;
 `;
 export const PageTitle = styled.h2`
   @import url("https://fonts.googleapis.com/css2?family=Kreon&display=swap");

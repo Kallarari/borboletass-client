@@ -14,9 +14,16 @@ import PagesTitle from "@/components/PagesTitle";
 import UserCard from "@/components/UserCard";
 import DefaultButton from "@/components/DefaultButton";
 import { useRouter } from "next/router";
+import { useAuthStore } from "@/store/authStore";
 
 const Users: React.FC = () => {
+  const { user } = useAuthStore();
   const router = useRouter();
+  useEffect(() => {
+    if (user && user.type != "admin") {
+      router.push("/");
+    }
+  }, [user]);
   const [userList, setUserList] = useState<IUser[]>([]);
   const [inputText, setInputText] = useState("");
   function handleCreateUser() {

@@ -1,5 +1,5 @@
 import PageContainer from "@/components/PageContainer";
-import React from "react";
+import React, { useEffect } from "react";
 import { Icon } from "@iconify/react";
 import {
   IndicationContainer,
@@ -15,6 +15,12 @@ import DefaultButton from "@/components/DefaultButton";
 import { useRouter } from "next/router";
 
 const Dashboard: React.FC = () => {
+  useEffect(() => {
+    let user = window.localStorage.getItem("auth");
+    if (!!user) {
+      router.push("/");
+    }
+  }, []);
   const router = useRouter();
   const IndicationsArray = [
     { title: "Ansiedade", subtitle: "Uma sensação que carrega..." },

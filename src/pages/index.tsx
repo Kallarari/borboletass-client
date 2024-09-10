@@ -20,8 +20,10 @@ const HomePage: React.FC = () => {
     axios
       .get<IUser>(`api/users/Login?userName=${login}&password=${password}`)
       .then((res) => {
-        if (login) saveUser(res.data);/* 
-        router.push("/Dashboard/Diarys"); */
+        if (login) saveUser(res.data);
+        if(res.data.type == "admin")
+          return router.push("/AdminDashboard"); 
+        router.push("/Dashboard/Diarys"); 
       })
       .catch((err) => {
         setHasError(true);
