@@ -18,11 +18,11 @@ import { useRouter } from "next/router";
 const Diarys: React.FC = () => {
   const { user } = useAuthStore();
   const router = useRouter();
-  useEffect(() => {
+   useEffect(() => {
     if (user && user.type != "admin") {
       router.push("/");
     }
-  }, [user]);
+  }, [user]); 
   const [inputText, setInputText] = useState("");
   const [diarysList, setDiarysList] = useState<IDiary[]>([]);
 

@@ -21,12 +21,12 @@ import { useAuthStore } from "@/store/authStore";
 // import { Container } from './styles';
 
 const Diarys: React.FC = () => {
-  const { user } = useAuthStore();
+  const { user } = useAuthStore();/* 
   useEffect(() => {
     if (user?.type == 'admin') {
       router.push("/");
     }
-  }, []);
+  }, []); */
   const [diary, setDiary] = useState<IDiary>({
     _id: "",
     content: "",
