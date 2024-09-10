@@ -16,6 +16,8 @@ import {
 } from "@/styles/DiarysView.module";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/router";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { HappinesCard, HappinessContainer, StyledSpan } from "@/styles/DashboardDiarys.module";
 
 const View: React.FC = () => {
   const { user } = useAuthStore();
@@ -55,7 +57,61 @@ const View: React.FC = () => {
             <Section>
               <StyledTitle>{diaryData?.title}</StyledTitle>
               <StyledContent>{diaryData?.content}</StyledContent>
-            </Section>
+            </Section> 
+            <HappinessContainer>
+              {diaryData?.happiness == 0 && (
+                <HappinesCard isClicked>
+                  <Icon
+                    width={40}
+                    color="#242a67"
+                    icon="ant-design:smile-filled"
+                  />
+                  <StyledSpan>Feliz</StyledSpan>
+                </HappinesCard>
+              )}
+              {diaryData?.happiness == 1 && (
+                <HappinesCard isClicked>
+                  <Icon width={38} color="#fa1" icon="fa6-solid:face-meh" />
+                  <StyledSpan>Indiferente</StyledSpan>
+                </HappinesCard>
+              )}
+              {diaryData?.happiness == 2 && (
+                <HappinesCard isClicked>
+                  <Icon width={40} color="#302f2f" icon="mingcute:sad-fill" />
+                  <StyledSpan>Triste</StyledSpan>
+                </HappinesCard>
+              )}
+              {diaryData?.happiness == 3 && (
+                <HappinesCard isClicked>
+                  <Icon
+                    width={40}
+                    color="#242a67"
+                    icon="material-symbols:sentiment-calm"
+                  />
+                  <StyledSpan>Calmo</StyledSpan>
+                </HappinesCard>
+              )}
+              {diaryData?.happiness == 4 && (
+                <HappinesCard isClicked>
+                  <Icon
+                    width={38}
+                    color="#fa1"
+                    icon="material-symbols:sentiment-stressed-rounded"
+                  />
+                  <StyledSpan>Em pânico</StyledSpan>
+                </HappinesCard>
+              )}
+              {diaryData?.happiness == 5 && (
+                <HappinesCard isClicked>
+                  <Icon
+                    width={40}
+                    color="#302f2f"
+                    icon="material-symbols:sentiment-dissatisfied-rounded"
+                  />
+                  <StyledSpan>Confuso</StyledSpan>
+                </HappinesCard>
+              )}
+            </HappinessContainer>
           </>
         )}
       </Container>

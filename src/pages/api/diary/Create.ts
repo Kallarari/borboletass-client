@@ -13,7 +13,7 @@ export default async (request: NowRequest, response: NowResponse) => {
     const db = await connectToDatabase(process.env.MONGODB_URI!);
     const collection = db.collection("diarys");
     await collection.insertOne(request.body);
-    return response.status(200).json();
+    return response.status(200);
   } else {
     return NextResponse.error() 
   }
