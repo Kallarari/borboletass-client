@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudflare/next-on-pages": "^1.13.2",
     "@ducanh2912/next-pwa": "^10.2.8",
+    "antd": "^5.20.6",
+    "aws-sdk": "^2.1691.0",
     "axios": "^1.7.2",
+    "cloudflare": "^3.5.0",
     "mongodb": "^6.8.0",
     "next": "14.2.5",
     "next-auth": "^5.0.0-beta.20",
@@ -18,7 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "styled-components": "^6.1.12",
-    "vercel": "^35.1.0",
+    "vercel": "^32.3.0",
     "zustand": "^4.5.5"
   },
   "devDependencies": {
